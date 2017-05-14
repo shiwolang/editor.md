@@ -5,6 +5,7 @@
         <title>Define extention plugins for Editor.md - Editor.md examples</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="../css/editormd.css" />
+        <link rel="stylesheet" href="../lib/docson/css/docson.css">
         <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
     </head>
     <body>
@@ -13,7 +14,10 @@
                 <h1>Define extention plugins for Editor.md</h1>
             </header>
             <div id="test-editormd">
-                <textarea style="display:none;" title="">```flow
+                <textarea style="display:none;" title="">```zhou
+nihao
+```
+```flow
 st=>start: User login
 op=>operation: Operation
 cond=>condition: Successful Yes or No?
@@ -23,6 +27,7 @@ st->op->cond
 cond(yes)->e
 cond(no)->op
 ```
+
 </textarea>
             </div>
         </div>
@@ -39,13 +44,13 @@ cond(no)->op
                     flowChart : true,             // 开启流程图支持，默认关闭
                     onCodeLang : {
                         "zhou" : function () {
-                            console.log(arguments);
-                            var a = "";
-                            for(var i = 0;i<100;i++){
-                                a += "nihao<br/>";
-                            }
-                            return a;
+                            return "<div class='zhou'>nihao</div>";
                         }
+                    },
+                    onchange : function() {
+//                        console.log(this.preview);
+                        // ....
+                        console.log(this.preview.find(".zhou").html("123"));
                     }
                 });
             });

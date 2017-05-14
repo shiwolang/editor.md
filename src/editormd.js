@@ -1976,10 +1976,9 @@
             flowchartTimer = null;
           }, 10);
         }
-
-        if (state.loaded) {
+        //if (state.loaded) { //zhou edit
           $.proxy(settings.onchange, this)();
-        }
+        //}  //zhou edit end
       }
 
       return this;

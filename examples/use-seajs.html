@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Using sea.js - Editor.md examples</title>
+        <link rel="stylesheet" href="../lib/docson/css/docson.css">
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="../css/editormd.min.css" /> 
         <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
@@ -31,20 +32,20 @@
                     <li>Enable [TOCM], Search Replace, Code fold</li>
                 </ul>  
             </header>
-            <div class="btns">
-                <button id="show-btn">Show editor</button>
-                <button id="hide-btn">Hide editor</button>
-                <button id="get-md-btn">Get Markdown</button>
-                <button id="get-html-btn">Get HTML</button>
-                <button id="watch-btn">Watch</button>
-                <button id="unwatch-btn">Unwatch</button>
-                <button id="preview-btn">Preview HTML (Press Shift + ESC cancel)</button>
-                <button id="fullscreen-btn">Fullscreen (Press ESC cancel)</button>
-                <button id="show-toolbar-btn">Show toolbar</button>
-                <button id="close-toolbar-btn">Hide toolbar</button>
-                <button id="toc-menu-btn">ToC Dropdown menu</button>
-                <button id="toc-default-btn">ToC default</button>
-            </div>
+            <!--<div class="btns">-->
+                <!--<button id="show-btn">Show editor</button>-->
+                <!--<button id="hide-btn">Hide editor</button>-->
+                <!--<button id="get-md-btn">Get Markdown</button>-->
+                <!--<button id="get-html-btn">Get HTML</button>-->
+                <!--<button id="watch-btn">Watch</button>-->
+                <!--<button id="unwatch-btn">Unwatch</button>-->
+                <!--<button id="preview-btn">Preview HTML (Press Shift + ESC cancel)</button>-->
+                <!--<button id="fullscreen-btn">Fullscreen (Press ESC cancel)</button>-->
+                <!--<button id="show-toolbar-btn">Show toolbar</button>-->
+                <!--<button id="close-toolbar-btn">Hide toolbar</button>-->
+                <!--<button id="toc-menu-btn">ToC Dropdown menu</button>-->
+                <!--<button id="toc-default-btn">ToC default</button>-->
+            <!--</div>-->
             <div id="test-editormd"></div>
         </div>   
         <!-- Flowchart & Sequence Diagram based on Raphael.js, and must load Raphael.js of Sea.js before. -->
@@ -55,7 +56,10 @@
                 base  : "./",
                 alias : {
                     jquery   : "js/jquery.min",
-                    editormd : "../editormd"
+                    editormd : "../src/editormd",
+                    docson : "../lib/docson",
+//                    "lib/handlebars" : "../docson/lib/handlebars"
+//                    "lib/handlebars" : "../docson/lib/handlebars"
                 }
             });
                 
@@ -63,7 +67,8 @@
             
             var deps = [
                 "jquery", 
-                "editormd", 
+                "editormd",
+                "docson",
                 "../languages/en", 
                 "../plugins/link-dialog/link-dialog",
                 "../plugins/reference-link-dialog/reference-link-dialog",
@@ -116,59 +121,13 @@
                             //this.width("100%");
                             //this.height(480);
                             //this.resize("100%", 640);
+                        },
+                        onCodeLang:{
+                            "zhou":function(){
+                                return "123"
+                            }
                         }
                     });
-                });
-
-                $("#show-btn").bind('click', function(){
-                    testEditor.show();
-                });
-
-                $("#hide-btn").bind('click', function(){
-                    testEditor.hide();
-                });
-
-                $("#get-md-btn").bind('click', function(){
-                    alert(testEditor.getMarkdown());
-                });
-
-                $("#get-html-btn").bind('click', function() {
-                    alert(testEditor.getHTML());
-                });                
-
-                $("#watch-btn").bind('click', function() {
-                    testEditor.watch();
-                });                 
-
-                $("#unwatch-btn").bind('click', function() {
-                    testEditor.unwatch();
-                });              
-
-                $("#preview-btn").bind('click', function() {
-                    testEditor.previewing();
-                });
-
-                $("#fullscreen-btn").bind('click', function() {
-                    testEditor.fullscreen();
-                });
-                
-                $("#show-toolbar-btn").bind('click', function() {
-                    testEditor.showToolbar();
-                });
-                
-                $("#close-toolbar-btn").bind('click', function() {
-                    testEditor.hideToolbar();
-                });
-                
-                $("#toc-menu-btn").click(function(){
-                    testEditor.config({
-                        tocDropdown   : true,
-                        tocTitle      : "目录 Table of Contents",
-                    });
-                });
-                
-                $("#toc-default-btn").click(function() {
-                    testEditor.config("tocDropdown", false);
                 });
             });
         </script>
