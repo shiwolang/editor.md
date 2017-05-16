@@ -214,7 +214,7 @@
                 codeFold          : true,
                 searchReplace     : true,
                 saveHTMLToTextarea: true,      // 保存 HTML 到 Textarea
-                htmlDecode        : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
+                htmlDecode        : "style,script|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
                 emoji             : true,
                 taskList          : true,
                 tocm              : true,          // Using [TOCM]
@@ -231,14 +231,7 @@
                 imageFormats      : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                 imageUploadURL    : "./php/upload.php",
                 onload            : function () {
-                    setTimeout(function () {
-                        $.each($(".doc"), function (i, v) {
-                            var v2 = $(v);
-                            var id = v2.attr("id");
-                            docson.doc(id,schema);
-                            console.log(11);
-                        });
-                    }, 10)
+                    
                 },
                 onCodeLang        : {
                     "zhou": function (context, code) {
